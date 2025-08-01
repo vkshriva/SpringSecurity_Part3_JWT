@@ -1,0 +1,33 @@
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres_db_banking
+    environment:
+      POSTGRES_DB: banking
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data_banking:/var/lib/postgresql/data
+
+#  springboot-app:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    container_name: springboot_app
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/banking
+#      SPRING_DATASOURCE_USERNAME: user
+#      SPRING_DATASOURCE_PASSWORD: password
+#      JAVA_TOOL_OPTIONS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
+#
+#    ports:
+#      - "8080:8080"
+#      - "5005:5005"
+#    depends_on:
+#      - postgres
+
+volumes:
+  postgres_data_banking:
